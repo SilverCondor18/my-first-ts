@@ -1,23 +1,14 @@
-type Employee = {
-  name: string;
-  id: number;
-};
+interface Length {
+  length: number;
+}
 
-type Manager = {
-  employees: Employee[];
-};
+function getLength<T extends Length>(a: T) {
+  return a.length;
+}
 
-type CEO = Employee & Manager;
 
-const ceo: CEO = {
-  name: 'Alice',
-  id: 1,
-  employees: [
-    {
-      name: 'Bob',
-      id: 2,
-    },
-  ],
-};
+const stringLength = getLength("Hello");
+const arrayLength = getLength([345, "sffd", 5, []]);
 
-console.log(ceo);
+console.log(stringLength);
+console.log(arrayLength);
